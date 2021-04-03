@@ -6,6 +6,8 @@ var counter = 0;
 // Using express: http://expressjs.com/
 var express = require('express');
 // Create the app
+var cors = require('cors')
+var bodyParser = require('body-parser')
 var app = express();
 const expressip = require('express-ip');
 // Set up the server
@@ -15,6 +17,17 @@ var server = app.listen(process.env.PORT || 3000, listen);
 var ip_list=[]
 
 
+
+app.use(bodyParser.json())
+app.use(cors())
+app.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+)
+
+var Users = require('./routes/User')
+app.use('/users', Users)
 
 app.use(expressip().getIpInfoMiddleware,(req,res,next)=>{
     var ip_addr= req.headers['x-forwarded-for']

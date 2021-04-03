@@ -10,11 +10,21 @@
   "author": "akash raj",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.13.4",
     "express-ip": "^1.0.3",
     "gists": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.5.0",
     "npm": "^6.14.11",
-    "socket.io": "^1.4.5"
+    "sequelize": "^6.6.2",
+    "socket.io": "^1.4.5",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"
