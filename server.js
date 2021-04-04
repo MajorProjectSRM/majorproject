@@ -49,6 +49,10 @@ app.use(expressip().getIpInfoMiddleware,(req,res,next)=>{
 
 app.use(express.static('./public/'));
 
+app.get('/',function(req,res){
+    return res.redirect('index.html');
+    }).listen(server)
+
 var online_users = []
 // // This call back just tells us that the server has started
 function listen() {
@@ -131,3 +135,4 @@ io.sockets.on('connection', function (socket) {
         }
     });
 });
+

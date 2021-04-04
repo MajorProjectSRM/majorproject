@@ -1,218 +1,227 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+                                <style>body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-image: linear-gradient(to right, #eb907c, #58a86c);
+    background-repeat: no-repeat
+}
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <meta name="google-site-verification" content="29VDwzTbFE9v6Tym_54m2BcxLMpF4LSegMfBqqrLES0" />
+input,
+textarea {
+    background-color: #F3E5F5;
+    border-radius: 50px !important;
+    padding: 12px 15px 12px 15px !important;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    border: 1px solid #F3E5F5 !important;
+    font-size: 16px !important;
+    color: #000 !important;
+    font-weight: 400
+}
 
-    <meta name="author" content="Akash Raj">
-    <meta name="description" content="A platform to collaborate and draw something cool or just play tic-tac-toe">
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #D500F9 !important;
+    outline-width: 0;
+    font-weight: 400
+}
 
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
 
-    <meta property="og:image" content="images/favicon.png">
-    <meta property="og:description"
-      content="A platform to collaborate and draw something cool or just play tic-tac-toe">
-    <meta property="og:title" content="Collaborative Drawing">
+.card {
+    border-radius: 0;
+    border: none
+}
 
+.card1 {
+    width: 50%;
+    padding: 40px 30px 10px 30px
+}
 
-    <meta property="twitter:title" content="Collaborative Drawing">
+.card2 {
+    width: 50%;
+    background-image: linear-gradient(to right, #e0c158, #2ca4f3)
+}
 
-    <title>Collaborative Drawing</title>
-    <script src="./js/socket.io-1.4.5.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+#logo {
+    width: 70px;
+    height: 60px
+}
 
-    <link rel="stylesheet" href="https://unpkg.com/huebee@1/dist/huebee.min.css">
+.heading {
+    margin-bottom: 60px !important
+}
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104119918-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
+::placeholder {
+    color: #000 !important;
+    opacity: 1
+}
 
-      gtag('config', 'UA-104119918-2');
-    </script>
+:-ms-input-placeholder {
+    color: #000 !important
+}
 
-  </head>
+::-ms-input-placeholder {
+    color: #000 !important
+}
 
-  <body>
-    <!-- <a href="https://github.com/akashraj9828/Collaborative_Drawing"><img
-        style="position: fixed; top: 0; right: 0; border: 0;z-index: 1000;"
-        src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a> -->
-    <div id="welcome-screen">
-      <div style="margin-top: 12vh;">
-        <!-- <h1 id="welcome-msg">Welcome to the BlackBoard</h1> -->
-        <div class="banner" style="margin-bottom:10vh ;">
-          <img src="./images/banner.png"
-            style="width:40%;max-width: 400px;min-width: 250px; filter: drop-shadow(28px 14px 5px black);" alt="banner">
-          <h5 class="text-white font-italic">(Invite your Friends and colab)</h5>
+.form-control-label {
+    font-size: 12px;
+    margin-left: 15px
+}
+
+.msg-info {
+    padding-left: 15px;
+    margin-bottom: 30px
+}
+
+.btn-color {
+    border-radius: 50px;
+    color: #fff;
+    background-image: linear-gradient(to right, #FFD54F, #D500F9);
+    padding: 15px;
+    cursor: pointer;
+    border: none !important;
+    margin-top: 40px
+}
+
+.btn-color:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #D500F9, #FFD54F)
+}
+
+.btn-white {
+    border-radius: 50px;
+    color: #D500F9;
+    background-color: #fff;
+    padding: 8px 40px;
+    cursor: pointer;
+    border: 2px solid #D500F9 !important
+}
+
+.btn-white:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #FFD54F, #D500F9)
+}
+
+a {
+    color: #000
+}
+
+a:hover {
+    color: #000
+}
+
+.bottom {
+    width: 100%;
+    margin-top: 50px !important
+}
+
+.sm-text {
+    font-size: 15px
+}
+
+@media screen and (max-width: 992px) {
+    .card1 {
+        width: 100%;
+        padding: 40px 30px 10px 30px
+    }
+
+    .card2 {
+        width: 100%
+    }
+
+    .right {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px !important
+    }
+
+    .card2 {
+        padding: 50px
+    }
+
+    .right {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important
+    }
+}</style>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript'></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="container px-4 py-5 mx-auto">
+    <div class="card card0">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+                        <!-- <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="logo.jpeg" style="height: 400px;width: 400px;margin-top: -150px;margin-bottom: -100px;"> </div> -->
+                        <h6 class="msg-info"><b>Create a new account</b></h6>
+                        <form action="/users/register" method="post">
+                        <div class="form-group"> 
+                            <label class="form-control-label text-muted">Username</label> 
+                            <input class="form-control" type="text" name="user_name" id="name"
+			                placeholder="Name" required /><br> 
+                        </div>
+                        <div class="form-group"> 
+                            <label class="form-control-label text-muted">Email</label>
+                            <input class="form-control" type="email" name="email" id="email"
+                            placeholder="E-Mail " required /><br>
+                        </div>
+                        <div class="form-group"> 
+                            <label class="form-control-label text-muted">Password</label> 
+                            <input class="form-control" type="password" name="password"
+                            id="password" placeholder="Password " required/><br>
+                        </div>
+                        <div class="form-group"> 
+                            <label class="form-control-label text-muted">Confirm Password</label> 
+                            <input class="form-control" type="password" name="confirm_password"
+                            id="password" placeholder="Confirm Password " required/><br> 
+                        </div>
+                        <div class="row justify-content-center my-3 px-3"> 
+                            <input class="btn-block btn-color" type="submit" id="submitDetails"
+			                name="submitDetails" value="Submit" /><br>
+                        </div>
+                        </form>
+                        <div class="row justify-content-center my-2"><small class="text-muted"><a href="login.html">Already have an account?</a></small></a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card2">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                    
+                    <h3 class="text-white">About Us</h3> <small class="text-white">Collaborative drawing is a web application where we have a virtual blackboard that helps you and your team collaborate to bring the best ideas to light. 
+                        It doesn’t matter whether you’re working individually or as part of a team—an online whiteboard can help you jot down and organize your ideas faster also the chat app feature provides the real time communication between or among the collegues.
+                        it uses open source js like p5.js and protocols like socket.io and other libraries to create a server and to communicate between members in chat feature.Also you can save the canvas or the drawing that you draw on the black board in image format.
+                        </small>
+                </div>
+            </div>
         </div>
-        <!-- <h4 class="text-white">Have fun!</h4> -->
-        <!-- <h3>Enter your name:</h3> -->
-        <input class="form-control" type="text" id="name"
-          style="display: unset;width: 230px;margin:20px;font-size: 20px;text-align: center;" autofocus
-          placeholder="Your Name" required>
-        <br>
-        <h3>Chose your Color</h3>
-
-        <input type="color" id="col" onchange="" value="#eeeeee"
-          style="width: 60px;margin: 30px;margin-top: 15px;height: 25px;">
-        <br>
-        <button type="submit" class="btn btn-danger" onclick="submit()">Enter</button>
-      </div>
-
     </div>
-
-    <div id="blackboard-chat-container" class="container-fluid col-sm-12">
-      <div id="alert-placeholder" class="row">
-
-      </div>
-      <h1 id="title">Welcome to Collaborative Drawing</h1>
-
-      <div class="row">
-        <div id="users-container" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <div class="users">
-            <div class="users-header clearfix">
-              <div class="users-about">
-                <div class="users-with">Online ✏</div>
-              </div>
-            </div>
-            <!-- end chat-header -->
-
-            <div class="online-users">
-              <ul id="online_users">
-              </ul>
-
-            </div>
-
-            <!-- end chat-message -->
-
-          </div>
-          <!-- end chat -->
-
-        </div>
-        <div id="canvas-container" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-        </div>
-        <div id="chat-container" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <div class="chat">
-            <div class="chat-header clearfix">
-              <div class="chat-about">
-                <div class="chat-with">Chat</div>
-              </div>
-            </div>
-            <!-- end chat-header -->
-
-            <div class="chat-history">
-              <ul id="chat-thread" style=" padding-left: 15px; ">
-              </ul>
-
-            </div>
-            <!-- end chat-history -->
-
-            <div class="chat-message clearfix">
-              <!-- <form> -->
-              <span>
-                <input type="text" class="form-control col-md-9" id="message-to-send" placeholder="Type your message">
-                <button class="btn btn-default col-md-3" style="width: 70px;" onclick="sendmsg()" type="submit">Send</button>
-
-              </span>
-              <!-- </form> -->
-            </div>
-            <!-- end chat-message -->
-
-          </div>
-          <!-- end chat -->
-
-        </div>
-      </div>
-
-      <div class="row" style='margin-top:5px'>
-        <div class="row" style=''>
-
-          <div id="color-picker">
-            <input id="color-input" class="color-input dark-picker hidden" value="#F80" />
-            <div class='size_n_btn'>
-              <span class=" size-picker" style="color: white">
-                Size:
-                <i class="glyphicon glyphicon-pencil" id='s2' style="color: rgb(241, 243, 243); font-size: 5px"></i>
-                <i class="glyphicon glyphicon-pencil" id='s4' style="color: azure; font-size: 10px"></i>
-                <i class="glyphicon glyphicon-pencil" id='s6' style="color: azure; font-size: 15px"></i>
-                <i class="glyphicon glyphicon-pencil" id='s8' style="color: azure; font-size: 20px"></i>
-                <i class="glyphicon glyphicon-pencil" id='s10' style="color: azure; font-size: 25px"></i>
-              </span>
-              <div>
-                <button id="clear-btn" onclick="clearCanvas()" class="btn btn-danger"
-                  style="display: table; margin-bottom: 5px ">Clear canvas</button>
-                <button id="save-btn" onclick="save_can()" class="btn btn-success"
-                  style="display: table; margin-bottom: 5px">Save canvas</button>
-                <!-- <button id="eraser-btn" onclick="eraser()" class="btn btn-info"
-                  style="display: table; margin-bottom: 5px">Eraser</button> -->
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- <div class="col-sm-6"> -->
-        <!-- </div> -->
-      </div>
-
-
-    </div>
-
-    <!-- analytics -->
-    <img class="d-none" src="http://canarytokens.com/traffic/terms/vrpg4eqrha3h62iqxz5c7rfni/post.jsp">
-    <img style="width: 50px;position: fixed;bottom: 0px;right:0px;filter: opacity(0.2);z-index: 10000;"
-      src="https://counter.alles.cx/akash_col_draw">
-
-  </body>
-
-  <!-- templates -->
-  <!-- //others -->
-  <li id="my-message" class="clearfix">
-    <div class="message-data align-right">
-      <span class="message-data-time">{{time}}, {{date}}</span> &nbsp; &nbsp;
-      <span class="message-data-name">{{name}}</span>
-      <!-- <i class="fa fa-circle me"></i> -->
-    </div>
-    <div class="message my-message float-right">
-      {{messageOutput}}
-    </div>
-  </li>
-  <!-- my reply -->
-  <li id="other-message">
-    <div class="message-data align-left">
-      <span class="message-data-name">{{name}}</span>
-      <!-- <i class="fa fa-circle"></i> -->
-
-      <span class="message-data-time">{{time}}, {{date}}</span>
-    </div>
-    <div class="message other-message ">
-      {{response}}
-    </div>
-  </li>
-  <!-- The actual snackbar -->
-  <div id="snackbar">Some text some message..</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@0.9.0/lib/p5.min.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/p5@0.5.6/lib/p5.min.js"></script> -->
-
-  <!-- <script src="./js/p5.min.js"></script> -->
-  <!-- <script src="./js/jquery.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
-
-  <!-- for color selector -->
-  <script src="https://unpkg.com/huebee@1/dist/huebee.pkgd.min.js"></script>
-  <script src="./js/sketch.js"></script>
-
-
-  <script>
-    $("#name").off()
-  </script>
-
+</div>
+</body>
 </html>

@@ -11,6 +11,11 @@ users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); 
+}
 var temp = []
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -103,6 +108,7 @@ users.get('/verification/', (req, res) => {
         .then(users => {
             users.verified = true
             users.save();
+            res.redirect("/login.html")
         })
 
 })
@@ -131,6 +137,8 @@ users.post('/login', (req, res) => {
                                 })
                                 temp.push(token);
                                 res.send(token)
+                                res.redirect("/draw.html")
+                                console.log(token)
                             } else {
                                 console.log("not verfied")
                             }
