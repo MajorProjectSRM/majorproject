@@ -13,6 +13,7 @@ const expressip = require('express-ip');
 // Set up the server
 // process.env.PORT is related to deploying on heroku
 var server = app.listen(process.env.PORT || 3000, listen);
+var user_server = app.listen(process.env.PORT || 3001, listen);
 
 var ip_list=[]
 
@@ -51,14 +52,17 @@ app.use(express.static('./public/'));
 
 app.get('/',function(req,res){
     return res.redirect('index.html');
-    }).listen(server)
+    }).listen(user_server)
 
 var online_users = []
 // // This call back just tells us that the server has started
 function listen() {
     var host = server.address().address;
     var port = server.address().port;
+    var user_host = user_server.address().address;
+    var user_port = user_server.address().port;
     console.log('col-draw app listening at http://' + host + ':' + port);
+    console.log('app listening at http://' + user_host + ':' + user_port);
 }
 
 

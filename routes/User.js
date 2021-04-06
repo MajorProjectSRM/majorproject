@@ -119,7 +119,7 @@ users.post('/login', (req, res) => {
             fLen = temp.length;
             for (i = 0; i < fLen; i++) {
                 if (req.body.token === temp[i]) {
-                    res.send('/dash')
+                    res.redirect('/draw.html')
                 }
             }
         } else {
@@ -136,16 +136,15 @@ users.post('/login', (req, res) => {
                                     expiresIn: 140000000000
                                 })
                                 temp.push(token);
+                                // res.redirect("/draw.html")
                                 res.send(token)
-                                res.redirect("/draw.html")
                                 console.log(token)
                             } else {
-                                console.log("not verfied")
+                                res.send("User does not exist")
                             }
                         }
                         else{
-                            console.log("invalid password");
-                            console.log('User does not exist')
+                            res.send("Invalid Password")
                         }
                     } 
                 })
