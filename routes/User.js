@@ -130,8 +130,10 @@ users.post('/login', (req, res) => {
                 })
                 .then(users => {
                     if (users) {
-                        if (bcrypt.compareSync(req.body.password, users.password)) {
-                            if (users.verified === true) {
+                        if (users.verified === true) 
+                        {
+                            if (bcrypt.compareSync(req.body.password, users.password)) 
+                            {
                                 let token = jwt.sign(users.dataValues, process.env.SECRET_KEY, {
                                     expiresIn: 140000000000
                                 })
@@ -140,13 +142,16 @@ users.post('/login', (req, res) => {
                                 res.send(token)
                                 console.log(token)
                             } else {
-                                res.send("User does not exist")
+                                res.send("Invalid Password")
                             }
                         }
                         else{
-                            res.send("Invalid Password")
+                            res.send("User is not verified")
                         }
                     } 
+                    else{
+                        res.send("user does not exist")
+                    }
                 })
                 .catch(err => {
                     res.status(400).json({ error: err })
