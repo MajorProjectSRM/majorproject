@@ -138,7 +138,7 @@ users.post('/login', (req, res) => {
                                     expiresIn: 140000000000
                                 })
                                 temp.push(token);
-                                // res.redirect("/draw.html")
+                                res.redirect("/draw.html")
                                 res.send(token)
                                 console.log(token)
                             } else {
