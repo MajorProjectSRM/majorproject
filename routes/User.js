@@ -69,7 +69,8 @@ users.post('/register', (req, res) => {
                                         User.create(userData)
                                             .then(users => {
                                                 console.log("testing")
-                                                res.json({ status: 'mail send to this email address: ' + users.email })
+                                                let mailSend = { status: 'mail send to this email address: ' + users.email }
+                                                res.send(mailSend)
                                             })
                                             .catch(err => {
                                                 res.send('error: ' + err)
@@ -80,8 +81,8 @@ users.post('/register', (req, res) => {
                             Store(hash);
                         })
                     } else {
-                        res.json({ status: 'this mail is already exist: ' + users.email })
-                        console.log('User already exists');
+                        let mailAlreadyExist = { status: 'this mail is already exist: ' + users.email }
+                        res.send(mailAlreadyExist)
                     }
                 })
                 .catch(err => {

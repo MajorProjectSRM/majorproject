@@ -12,7 +12,7 @@
             if ( (email.match(emailReg)) && x!= '')
              { 
                 //  location.href="/users/register";
-                document.getElementById("login_form").method = "post";
+               //  document.getElementById("login_form").method = "post";
                 document.getElementById('login_form').action = "/users/login";
                 
               }
@@ -83,7 +83,7 @@ button:hover {
 </style>
 <body>
     <div id="box" style="margin-top: 50px;" >
-<form id="login_form">
+<form id="login_form" method="POST">
 <div class="formContainer">
 <h1>Login to your account</h1>
 <hr>

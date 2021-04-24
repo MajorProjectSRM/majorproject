@@ -13,9 +13,6 @@ module.exports = db.sequelize.define(
     password: {
       type: Sequelize.STRING
     },
-    is_active:{
-      type:Sequelize.BOOLEAN
-    },
     verified:{
       type:Sequelize.BOOLEAN
     },
