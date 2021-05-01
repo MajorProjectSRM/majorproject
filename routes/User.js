@@ -100,13 +100,13 @@ users.get('/verification/', (req, res) => {
     var ud = {
         verified: true
     }
-    console.log("heree")
     User.findOne({
             where: {
                 email: qdata.em
             }
         })
         .then(users => {
+            console.log("hello duniya");
             users.verified = true
             users.save();
             res.redirect("/login.html")
@@ -159,6 +159,77 @@ users.post('/login', (req, res) => {
                 })
             }
     })
+
+users.post("/forgotPassword", (req, res) =>{
+    const userData = {
+        email: req.body.email,
+        password: req.body.password
+    }
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(users => {
+        console.log(users);
+        if (users != null) {
+            var mailOption = {
+                from: 'girishgarg9999@gmail.com', // sender this is your email here
+                to: req.body.email, // receiver email2 
+                subject: "Change Password",
+                html: `<h4>Hello ,Please Click on this link to Change Your Password<h4><br><hr>
+                <br><a href="http://localhost:3000/users/changePassword/?em=${userData.email}&emp=${userData.password}">
+                CLICK ME TO CHANGE YOUR PASSWORD</a>`
+            }
+            transporter.sendMail(mailOption, (error, info) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log("testing purpose")
+                    let mailSend = { status: 'mail send to this email address: ' + users.email }
+                    res.send(mailSend)
+                    }
+                });       
+        } else {
+            let userNotExist = { status: 'this emailId is not register: ' + req.body.email }
+            res.send(userNotExist)
+        }
+    })
+    .catch(err => {
+        console.log('error: ' + err)
+    })
+})
+
+users.get('/changePassword', (req, res) => {    
+    var q = url.parse(req.url, true);
+    var qdata = q.query;
+    console.log("email",qdata.em);
+    console.log("paww",qdata.emp);
+    const userData = {
+        password: qdata.emp
+    }
+    User.findOne({
+            where: {
+                email: qdata.em
+            }
+        })
+        .then(users => {
+           bcrypt.hash(qdata.emp, 10, (err, hash) => {
+            function Store(pass) {
+                userData.password = hash
+                users.password = userData.password
+                users.save();
+                console.log("Updated Successfully");
+                res.redirect("/login.html")
+            }
+            Store(hash)
+           })
+        })
+        .catch(err =>{
+            console.log('error: ' + err)
+        })
+
+})
 
 users.post('/logout', (req, res) => {
     console.log(req.body.token);
