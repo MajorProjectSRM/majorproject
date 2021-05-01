@@ -3,19 +3,36 @@
 <head>
     
   <script>
-    function clickme()
-    {
+    function clickme(){
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     var email = document.getElementById("email").value;
-    var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     x=document.getElementById("password").value;
-    // y=document.getElementById("confirm_password").value;
-        
-            //  location.href="/users/register";
-            document.getElementById("form_id").method = "post";
-            document.getElementById('form_id').action = "/users/forgotPassword";
-            alert("please check your email to verify your account")       
-   }
-    
+
+      if(email.match(mailformat)){
+        if (email != '' && x!= '' && y!=''){ 
+            if(x!=y){
+               alert("password and confirm password is not same")
+            } 
+            else{
+             if(x===y){
+               document.getElementById("form_id").method = "post";
+               document.getElementById('form_id').action = "/users/forgotPassword";
+             }
+            }
+         } 
+         else{
+            if((email=='')){
+                 alert("enter valid email")
+             }
+             else if (x=='' ||  y=='' ){
+                  alert("please enter valid password")
+            } 
+        }
+      }
+      else{
+         alert("enter valid email format")
+      }
+ }
 
 </script> 
 
@@ -87,9 +104,13 @@ button:hover {
 
 <label for="email"><b>Email</b></label>
 <input type="text" placeholder="Enter Email" name="email" id="email" >
+<label for="password"><b>Password</b></label>
+<input type="password" pattern="[a-zA-Z0-9]{6}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Enter Password" name="password"  id="password" >
+<label for="repeatPassword"><b>Confirm Password</b></label>
+<input type="password" pattern="[a-zA-Z0-9]{6}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Confirm Password" name="confirm_Password" id="confirm_password" >
 <p> <a style="text-decoration:none; color: blue;"  href="login.html">Login to your account</a> </div>
     <p> <a style="text-decoration:none; color: blue; font-size: 20px;"  href="index.html">Don't have an account?</a> 
-    <button onclick="clickme()" class="signup">Submit</button>
+<button onclick="clickme()" class="signup">Submit</button>
 
 
 </form>
