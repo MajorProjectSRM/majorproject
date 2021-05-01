@@ -11,7 +11,7 @@
     x=document.getElementById("password").value;
     y=document.getElementById("confirm_password").value;
 
-
+      if(username !=''){
       if(email.match(mailformat)){
         if (username != '' && email != '' && x!= '' && y!=''){ 
             if(x!=y){
@@ -25,10 +25,7 @@
             }
          } 
          else{
-             if(username==''){
-                 alert("please valid username")
-             }
-             else if((email=='')){
+             if((email=='')){
                  alert("enter valid email")
              }
              else if (x=='' ||  y=='' ){
@@ -39,6 +36,10 @@
       else{
          alert("enter valid email format")
       }
+   }
+   else{
+      alert("please valid username")
+   }
  }
 </script> 
 
@@ -112,9 +113,9 @@ button:hover {
 <label for="email"><b>Email</b></label>
 <input type="text" placeholder="Enter Email" name="email" id="email" >
 <label for="password"><b>Password</b></label>
-<input type="password" pattern="[a-zA-Z0-9]{6}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Enter Password" name="password"  id="password" >
+<input type="password" pattern="[a-zA-Z0-9].{6,}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Enter Password" name="password"  id="password" >
 <label for="repeatPassword"><b>Confirm Password</b></label>
-<input type="password" pattern="[a-zA-Z0-9]{6}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Confirm Password" name="confirm_Password" id="confirm_password" >
+<input type="password" pattern="[a-zA-Z0-9].{6,}" title="Password must contain one upper letter, one lower letter, minimum 6 letters and one numerical value" placeholder="Confirm Password" name="confirm_Password" id="confirm_password" >
 <p> <a style="text-decoration:none; color: blue;" href="login.html">Already have an account?</a> </div>
 
 <button onclick="clickon()" class="signup">Sign Up</button>
