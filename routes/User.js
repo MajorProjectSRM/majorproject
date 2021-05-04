@@ -20,8 +20,8 @@ var temp = []
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'girishgarg9999@gmail.com',
-        pass: '9460663999ss'
+        user: 'shashankgarg2201@gmail.com',
+        pass: 'sha$2201'
     }
 });
 
@@ -170,7 +170,7 @@ users.post('/logout', (req, res) => {
         if (req.body.token == temp[i]) {
             temp.pop[temp[i]]
             console.log("here");
-            res.send("loggedout")
+            res.send("logged out")
 
         }
     }
