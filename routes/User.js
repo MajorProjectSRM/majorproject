@@ -139,9 +139,9 @@ users.post('/login', (req, res) => {
                                     expiresIn: 140000000000
                                 })
                                 temp.push(token);
+                                console.log(token)
                                 res.redirect("/draw.html")
                                 res.send(token)
-                                console.log(token)
                             } else {
                                 res.send("Invalid Password")
                             }
